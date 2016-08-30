@@ -1,4 +1,4 @@
-package nl.rotjochie.skyblock;
+package nl.rotjochie.skyblock.Utils;
 
 import java.util.List;
 
