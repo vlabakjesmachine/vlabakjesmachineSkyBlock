@@ -2,3 +2,5 @@ name: RotjochieSkyblock
 author: ducitymp, CodingGrid
 version: 1.0
 main: nl.rotjochie.skyblock.Core
+commands:
+  hoi:
