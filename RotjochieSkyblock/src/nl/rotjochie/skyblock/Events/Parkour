@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import me.CodingGrid.Main;
+import nl.rotjochie.skyblock.Core;
 
 public class WoolMovement implements Listener{
 	
