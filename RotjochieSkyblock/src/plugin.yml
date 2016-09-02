@@ -1,6 +1,4 @@
 name: RotjochieSkyblock
-author: ducitymp, CodingGrid
+author: ducitymp
 version: 1.0
 main: nl.rotjochie.skyblock.Core
-commands:
-  hoi:
