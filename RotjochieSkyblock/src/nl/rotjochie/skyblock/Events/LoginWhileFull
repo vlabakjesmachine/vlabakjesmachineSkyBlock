@@ -1,0 +1,30 @@
+package nl.rotjochie.skyblock.Events;
+
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerLoginEvent;
+
+import nl.rotjochie.skyblock.Core;
+
+public class LoginWhileFull implements Listener{
+	
+	public static Core pl;
+	public LoginWhileFull(Core plugin)	{
+		this.pl = plugin;
+	}
+	
+	  
+	
+	@EventHandler
+	public void onLogin(PlayerLoginEvent e){
+	if (e.getResult().equals(PlayerLoginEvent.Result.KICK_FULL)){
+		if(!e.getPlayer().hasPermission("rotjochie.joinfull")){
+			e.setKickMessage("§cKoop een rank om volle servers te kunnen joinen!");
+		}
+		e.allow();
+		e.getPlayer().sendMessage("§cAangezien je een rank hebt kan je volle servers joinen! Dankjewel voor je support!");
+	}
+	}
+}
+
+
