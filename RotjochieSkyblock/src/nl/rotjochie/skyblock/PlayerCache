@@ -1,0 +1,21 @@
+package nl.rotjochie.skyblock;
+
+public class PlayerCache {
+	  public String lastMessage = "";
+	  public String lastCommand = "";
+	  public long lastMessageTime = 0L;
+	  public long lastCommandTime = 0L;
+	  public long lastMagicTime = 0L;
+	  
+	  public void reset()
+	  {
+	    this.lastMessage = "";
+	    this.lastCommand = "";
+	    
+	    this.lastMessageTime = 0L;
+	    this.lastCommandTime = 0L;
+	    this.lastMagicTime = 0L;
+	  }
+}
+
+
