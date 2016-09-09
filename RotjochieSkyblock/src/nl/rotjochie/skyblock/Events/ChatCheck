@@ -1,0 +1,55 @@
+package nl.rotjochie.skyblock.Events;
+
+import java.util.HashMap;
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import nl.rotjochie.skyblock.Core;
+import nl.rotjochie.skyblock.PlayerCache;
+
+public class ChatCheck implements Listener{
+	
+	private static Core pl;
+	public ChatCheck(Core plugin)
+	  {
+		 this.pl = plugin;
+	  }
+	private static HashMap<String, PlayerCache> playerData = new HashMap();
+	 public static PlayerCache getDataFor(Player player)
+	  {
+	    String name = player.getName();
+	    PlayerCache cache = (PlayerCache)playerData.get(name);
+	    if (cache == null)
+	    {
+	      cache = new PlayerCache();
+	      playerData.put(name, cache);
+	    }
+	    
+	    return cache;
+	  }
+	
+	 @EventHandler
+	 public void onChatE(AsyncPlayerChatEvent e){
+		 Player pl = e.getPlayer();
+		    PlayerCache plData = getDataFor(pl);
+		 long now = System.currentTimeMillis() / 1000L;
+		    long messageDelay = 3L;
+		    if(!pl.hasPermission("rotjochie.bypasschatcooldown")){
+		    if (now - plData.lastMessageTime < messageDelay)
+		    {
+		        long time = messageDelay - (now - plData.lastMessageTime);
+		        pl.sendMessage("§cJe mag niet spammen!");
+		      
+		        e.setCancelled(true);
+		      }
+		    
+		    else {
+		      plData.lastMessageTime = now;
+		    }
+	 }   
+	 }
+	 
+}
