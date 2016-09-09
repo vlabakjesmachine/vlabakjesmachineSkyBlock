@@ -11,6 +11,9 @@ import nl.rotjochie.skyblock.Events.BiomeInventroyInteract;
 import nl.rotjochie.skyblock.Events.MainInventoryInteract;
 import nl.rotjochie.skyblock.Events.PlayerJoin;
 import nl.rotjochie.skyblock.Events.PreCommandProgress;
+import nl.rotjochie.skyblock.Events.HidePlugins;
+import nl.rotjochie.skyblock.Events.LoginWhileFull;
+import nl.rotjochie.skyblock.Events.WoolMovement;
 
 public class Core extends JavaPlugin{
 	
@@ -21,9 +24,12 @@ public class Core extends JavaPlugin{
 		getServer().getPluginManager().registerEvents(new MainInventoryInteract(), this);
 		getServer().getPluginManager().registerEvents(new BiomeInventroyInteract(), this);
 		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+		getServer().getPluginManager().registerEvents(new HidePlugins(this), this);
+		getServer().getPluginManager().registerEvents(new LoginWhileFull(this), this);
+		getServer().getPluginManager().registerEvents(new WoolMovement(this), this);
 		
 		if (!setupEconomy() ) {
-			getLogger().severe(String.format("[%s] - Disable De plugin Vault zit er nog niet in!", getDescription().getName()));
+			getLogger().severe(String.format("[%s] - Er zit nog geen economy plugin in, Vault is zelf geen!", getDescription().getName()));
 			getServer().getPluginManager().disablePlugin(this);
 			return;
 		}
